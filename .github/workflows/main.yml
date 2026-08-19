@@ -1,0 +1,19 @@
+name: Compilar PSP
+on: [push, workflow_dispatch]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: pspdev/pspdev:latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Usar el PSPSDK
+        run: make
+      - name: Preparar el EBOOT
+        run: cp ArbitroPSP.elf EBOOT.BIN
+      - name: Entregar Archivos
+        uses: actions/upload-artifact@v4
+        with:
+          name: Archivos_Para_ISO
+          path: |
+            EBOOT.BIN
+            PARAM.SFO
