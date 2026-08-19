@@ -6,7 +6,7 @@ CXXFLAGS = $(CFLAGS) -fno-exceptions -fno-rtti
 ASFLAGS = $(CFLAGS)
 
 EXTRA_TARGETS = EBOOT.PBP
-PSP_EBOOT_TITLE = Simulador de Arbitro
+PSP_EBOOT_TITLE = Juego Arbitro PSP
 
-PSPSDK=$(shell psp-config --pspsdk-path)
-include $(PSPSDK)/lib/build.mak
+PSPBIN = $(shell psp-config --pspdev-path)/bin
+include $(PSPBIN)/build.mak
