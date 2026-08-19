@@ -2,13 +2,9 @@
 #include <pspdebug.h>
 #include <pspdisplay.h>
 
-// Macros obligatorios para la arquitectura de PSP
 PSP_MODULE_INFO("ArbitroPSP", 0, 1, 1);
 PSP_MAIN_THREAD_ATTR(THREAD_ATTR_USER);
 
-#define printf pspDebugScreenPrintf
-
-// Callback para permitir salir al menú principal de la consola
 int exit_callback(int arg1, int arg2, void *common) {
     sceKernelExitGame();
     return 0;
@@ -29,22 +25,18 @@ int SetupCallbacks(void) {
     return thid;
 }
 
-int main() {
-    // Inicializar la pantalla de depuración en texto
-    pspDebugScreenInit();
+int main(void) {
     SetupCallbacks();
+    pspDebugScreenInit();
 
-    // Bucle principal
+    pspDebugScreenClear();
+    pspDebugScreenPrintf("=====================================\n");
+    pspDebugScreenPrintf("    SIMULADOR DE ARBITRO PSP v1.0    \n");
+    pspDebugScreenPrintf("=====================================\n\n");
+    pspDebugScreenPrintf(" ¡El juego inicio correctamente!\n\n");
+    pspDebugScreenPrintf(" Presiona HOME para salir.\n");
+
     while (1) {
-        pspDebugScreenSetXY(0, 0);
-        printf("=====================================\n");
-        printf("    SIMULADOR DE ARBITRO PSP v1.0    \n");
-        printf("=====================================\n\n");
-        printf(" ¡El juego inicio correctamente!\n\n");
-        printf(" Presiona HOME o la tecla asignada\n");
-        printf(" en PPSSPP para salir.\n");
-
-        // Pausa necesaria para evitar pantallazo negro y sincronizar fps
         sceDisplayWaitVblankStart();
     }
 
