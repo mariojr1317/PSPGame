@@ -13,3 +13,4 @@ PSP_EBOOT_TITLE = Juego Arbitro PSP
 
 PSPSDK = $(shell psp-config --pspsdk-path)
 include $(PSPSDK)/lib/build.mak
+LIBS = -lpspaudio -lpspdebug -lpspge -lpspdisplay -lpspctrl
