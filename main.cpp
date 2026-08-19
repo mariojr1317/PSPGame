@@ -1,3 +1,9 @@
+#include "audio.h"
+
+// Ejemplo de uso:
+if (pad.Buttons & PSP_CTRL_CROSS) {
+    sonarSilbato(); // Genera el pitido de silbato
+}
 #include <pspaudio.h>
 #include <math.h>
 
