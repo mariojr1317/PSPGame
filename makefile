@@ -8,5 +8,5 @@ ASFLAGS = $(CFLAGS)
 EXTRA_TARGETS = EBOOT.PBP
 PSP_EBOOT_TITLE = Juego Arbitro PSP
 
-PSPBIN = $(shell psp-config --pspdev-path)/bin
-include $(PSPBIN)/build.mak
+PSPSDK = $(shell psp-config --pspsdk-path)
+include $(PSPSDK)/lib/build.mak
